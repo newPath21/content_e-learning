@@ -11,7 +11,7 @@ class OrderField(models.PositiveIntegerField):
         if getattr(model_instance, self.attname) is None:
             # no current values
             try:
-                qs = self.objects.all()
+                qs = self.model.objects.all()
                 if self.for_fields:
                     # filter by objects with the same field values
                     # for the fields in 'for fields'
