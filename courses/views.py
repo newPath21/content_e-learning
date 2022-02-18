@@ -36,16 +36,19 @@ class OwnerCourseMixin(OwnerMixin):
 
 
 class OwnerCourseEditMixin(OwnerCourseMixin, OwnerEditMixin):
-    template_name = 'course/manage/course/form.html'
+    template_name = 'courses/manage/course/form.html'
 
 
-class ManageCourseListView(OwnerCourseEditMixin, CreateView):
+class ManageCourseListView(OwnerCourseMixin, ListView):
+    template_name = 'courses/manage/course/list.html'
+
+
+class CourseCreateView(OwnerCourseEditMixin, CreateView):
     pass
-
 
 class CourseUpdateView(OwnerCourseEditMixin, UpdateView):
     pass
 
 
 class CourseDeleteView(OwnerCourseMixin, DeleteView):
-    template_name = 'course/manage/course/delete.html'
+    template_name = 'courses/manage/course/delete.html'
