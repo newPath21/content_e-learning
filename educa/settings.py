@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
     'drf_yasg',  # <-- Here
     'chat',
+    'channels',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -150,4 +152,14 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPersmissionsOrAnonReadOnly'
     ],
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
+}
+ASGI_APPLICATION = 'educa.routing.application'
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [('127.0.0.1', 6379)],
+        },
+    },
 }
